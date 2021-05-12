@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: ['./public/**/*.html', './src/**/*.html', './src/**/*.vue'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
