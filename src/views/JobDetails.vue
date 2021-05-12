@@ -3,7 +3,9 @@
     <div class="">
       <div class="py-5">
         <div class="flex justify-between">
-          <base-icon iconId="navigate-back" class="w-5 h-5" />
+          <a href="#" @click="$router.go(-1)">
+            <base-icon iconId="navigate-back" class="w-5 h-5" />
+          </a>
           <h1 class="text-navy font-bold">{{ job.company }}</h1>
           <div class="opacity-0"><p>end</p></div>
         </div>
