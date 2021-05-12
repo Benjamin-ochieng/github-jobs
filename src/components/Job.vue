@@ -1,5 +1,21 @@
 <template>
-  <div class="flex flex-col mb-10">
+  <router-link
+    :to="{
+      name: 'JobDetails',
+      params: {
+        id: job.id,
+        company: job.company,
+        logo: job.company_logo,
+        title: job.title,
+        type: job.type,
+        description: job.description,
+        how_to_apply: job.how_to_apply,
+        created_at: job.created_at,
+        location: job.location,
+      },
+    }"
+    class="flex flex-col mb-10"
+  >
     <div class="job flex pb-6 items-center">
       <div class="pr-6">
         <div class="relative w-20 h-20">
@@ -34,7 +50,7 @@
       </div>
     </div>
     <div class="border-b border-1 border-gray-300 md:mr-4"></div>
-  </div>
+  </router-link>
 </template>
 
 <script>

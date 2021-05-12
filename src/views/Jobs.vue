@@ -75,13 +75,21 @@
       <div class="flex lg:flex-grow flex-col lg:pl-20 lg:py-10">
         <h2 v-if="loading" class="text-lg mb-8 font-bold text-navy">Fetching jobs...</h2>
         <h2 v-else class="text-lg mb-8 font-bold text-navy">{{ message }}</h2>
-        <div id="jobs" class="flex-1 flex overflow-hidden">
-          <div class="flex-1 overflow-y-auto scroll">
+        <div class="flex-1 flex overflow-hidden">
+          <div id="jobs" class="flex-1 overflow-y-auto scroll">
             <Job v-for="job in jobs" :key="job.id" :job="job" />
           </div>
         </div>
-        <div class="flex pt-10">
-          <base-button value="Load more" @click="fetchJobs" />
+        <div class="flex pt-10 justify-center">
+          <base-button
+            v-if="jobs.length === 50"
+            value="Load more"
+            class="px-8"
+            @click="
+              fetchJobs();
+              scrollToTop();
+            "
+          />
         </div>
       </div>
     </section>
@@ -108,6 +116,10 @@ export default {
   methods: {
     toggleFilter() {
       this.filter = !this.filter;
+    },
+    scrollToTop() {
+      const container = this.$el.querySelector('#jobs');
+      container.scrollTo(0, 0);
     },
   },
   setup() {

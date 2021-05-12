@@ -31,7 +31,7 @@ export default createStore({
       state.message = message;
     },
     SET_RECENTLOCATIONS(state, location) {
-      state.recentLocations = [...new Set([location, ...state.recentLocations])];
+      if (location) state.recentLocations = [...new Set([location, ...state.recentLocations])];
       if (state.recentLocations.length > 4) {
         state.recentLocations.pop();
       }
